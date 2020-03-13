@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: usersnjapp-pod
+  labels:
+    app: usersnjapp
+spec:
+  hostname: usersnjapp-pod1
+  containers:
+  - name: usersnjapp
+    image: mycluster.icp:8500/usersnjappns/usersnjapp:latest
+    ports:
+    - containerPort: 3005 
+    env:
+      - name: PGDBDATABASE
+        value: 'usersapi'
+      - name: PGDBUSER
+        value: 'dbuser'
+      - name: PGDBPASSWORD
+        value: 'dbpassword'
+      - name: PGDBPORT
+        value: '5432'
+      - name: PGDBHOST
+        value: usersnjapp-db-cluster-svc

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: usersnjapp-db-pod
+  labels:
+    app: usersnjapp-db
+spec:
+  containers:
+  - name: usersnjapp-db
+    image: postgres:latest
+    ports:
+    - containerPort: 5432
+    env:
+      - name: POSTGRES_DB
+        value: 'usersapi'
+      - name: POSTGRES_USER
+        value: 'dbuser'
+      - name: POSTGRES_PASSWORD
+        value: 'dbpassword'
